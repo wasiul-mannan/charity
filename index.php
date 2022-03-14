@@ -1,3 +1,10 @@
+<?php
+include("includes/db.php");session_start();
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script> window.open('login.php','_self')</script>";
+}
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -89,12 +96,12 @@
 				<div class="container">
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-						<h1 id="fh5co-logo"><a href="index.html">Charity</a></h1>
+						<h1 id="fh5co-logo"><a href="index.php">Charity</a></h1>
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
 								<li class="active">
-									<a href="index.html">Home</a>
+									<a href="index.php">Home</a>
 								</li>
 								<li>
 									<a href="#" class="fh5co-sub-ddown">Get Involved</a>
@@ -107,9 +114,9 @@
 									<a href="#" class="fh5co-sub-ddown">Fundraise</a>
 
 								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="about.php">About</a></li>
+								<li><a href="blog.php">Blog</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -154,8 +161,8 @@
 					<div class="desc animate-box">
 						<h2><strong>Donate</strong> for the <strong>Poor Children</strong></h2>
 
-						<span><button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-								data-target="#myModal">Donate Now</button></span>
+						<span><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Donate Now</button></span>
+						
 					</div>
 				</div>
 
@@ -220,16 +227,13 @@
 
 					<div class="row row-bottom-padded-md">
 						<div class="col-md-12 text-center animate-box">
-							<p><img src="images/cover_bg_1.jpg" alt="Free HTML5 Bootstrap Template"
-									class="img-responsive"></p>
+							<p><img src="images/cover_bg_1.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 						</div>
 						<div class="col-md-6 text-center animate-box">
-							<p><img src="images/cover_bg_2.jpg" alt="Free HTML5 Bootstrap Template"
-									class="img-responsive"></p>
+							<p><img src="images/cover_bg_2.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 						</div>
 						<div class="col-md-6 text-center animate-box">
-							<p><img src="images/cover_bg_3.jpg" alt="Free HTML5 Bootstrap Template"
-									class="img-responsive"></p>
+							<p><img src="images/cover_bg_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 						</div>
 					</div>
 					<div class="row">
@@ -277,8 +281,7 @@
 						<div class="col-md-12">
 							<ul id="fh5co-portfolio-list">
 
-								<li class="two-third animate-box" data-animate-effect="fadeIn"
-									style="background-image: url(images/cover_bg_1.jpg); ">
+								<li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/cover_bg_1.jpg); ">
 									<a href="#" class="color-3">
 										<div class="case-studies-summary">
 											<span>Give Love</span>
@@ -287,8 +290,7 @@
 									</a>
 								</li>
 
-								<li class="one-third animate-box" data-animate-effect="fadeIn"
-									style="background-image: url(images/cover_bg_3.jpg); ">
+								<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/cover_bg_3.jpg); ">
 									<a href="#" class="color-4">
 										<div class="case-studies-summary">
 											<span>Give Love</span>
@@ -297,8 +299,7 @@
 									</a>
 								</li>
 
-								<li class="one-third animate-box" data-animate-effect="fadeIn"
-									style="background-image: url(images/cover_bg_1.jpg); ">
+								<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/cover_bg_1.jpg); ">
 									<a href="#" class="color-5">
 										<div class="case-studies-summary">
 											<span>Give Love</span>
@@ -306,8 +307,7 @@
 										</div>
 									</a>
 								</li>
-								<li class="two-third animate-box" data-animate-effect="fadeIn"
-									style="background-image: url(images/cover_bg_3.jpg); ">
+								<li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/cover_bg_3.jpg); ">
 									<a href="#" class="color-6">
 										<div class="case-studies-summary">
 											<span>Give Love</span>
@@ -586,6 +586,51 @@
 
 
 
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Add Notes</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+
+					<div class="form-group">
+						<label for="pwd">Select Payment Method</label>
+						<select rows="3" class="form-control" id="payment_method" name="payment_method">
+							<option value="Bkash">Bkash</option>
+							<option value="Nagad">Nagad</option>
+							<option value="Rocket">Rocket</option>
+							<option value="Ucash">Ucash</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="pwd">Enter transaction mobile number</label>
+						<input type="text" rows="3" class="form-control" id="mobile_number" name="mobile_number">
+					</div>
+
+					<div class="form-group">
+						<label for="pwd">Enter TRXID</label>
+						<input type="text" rows="3" class="form-control" id="trxid" name="trxid">
+					</div>
+
+					<div class="form-group">
+						<label for="pwd">Enter Amount</label>
+						<input type="text" rows="3" class="form-control" id="amount" name="amount">
+					</div>
+
+
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" id="add_data" class="btn btn-primary" value="Add">Add</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 
 
@@ -596,47 +641,66 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span
-							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title" id="myModalLabel">Add Tongue Twister</h4>
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Donate here</h4>
 				</div>
-				<div class="modal-body">
-					<form method="POST" enctype="multipart/form-data">
+
+				<form method="POST" enctype="multipart/form-data">
+					<div class="modal-body">
 						<div class="form-group">
-							<label for="usr">Please Choose a Picture:</label>
-							<input type="file" name="image">
-							<script type="text/javascript">
-								$(document).ready(function () {
-									$(window).keydown(function (event) {
-										if (event.keyCode == 13) {
-											event.preventDefault();
-											return false;
-										}
-									});
-								});
-							</script>
+							<label for="pwd">Select Payment Method</label>
+							<select rows="3" class="form-control" name="payment_method">
+								<option value="Bkash">Bkash</option>
+								<option value="Nagad">Nagad</option>
+								<option value="Rocket">Rocket</option>
+								<option value="Ucash">Ucash</option>
+							</select>
 						</div>
+
 						<div class="form-group">
-							<label for="pwd">Please write the tongue twister:</label>
-							<input type="text" rows="3" class="form-control">
+							<label for="pwd">Enter transaction mobile number</label>
+							<input type="text" rows="3" class="form-control" name="mobile_number">
 						</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" name="save">Save changes</button>
-					<?php 
-					if(isset($_POST['save'])){
-		  
-		  $text = $_POST['text'];
-	
-		  
-		?>
-				</div>
+
+						<div class="form-group">
+							<label for="pwd">Enter TRXID</label>
+							<input type="text" rows="3" class="form-control" name="trxid">
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">Enter Amount</label>
+							<input type="text" rows="3" class="form-control" name="amount">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary" name="save">Save changes</button>
+					</div>
 				</form>
+
+				<?php
+				if (isset($_POST['save'])) {
+
+					$payment_method = $_POST['payment_method'];
+					$mobile_number = $_POST['mobile_number'];
+					$trxid = $_POST['trxid'];
+					$amount = $_POST['amount'];
+
+					$run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount) 
+									values ('$payment_method','$mobile_number','$trxid','$amount')");
+
+					if ($run_donation) {
+						echo "<script>alert('Donated successfully')</script>";
+						echo "<script> window.open('index.php','_self')</script>";
+					} else {
+						echo '<script>alert("Welcome to Geeks for Geeks")</script>';
+					}
+				}
+
+				?>
 			</div>
 		</div>
 	</div>
-
 
 
 

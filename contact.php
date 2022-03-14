@@ -86,12 +86,12 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html">Charity</a></h1>
+					<h1 id="fh5co-logo"><a href="index.php">Charity</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.php">Home</a>
 							</li>
 							<li>
 								<a href="#" class="fh5co-sub-ddown">Get Involved</a>
@@ -103,9 +103,9 @@
 							<li>
 								<a href="#" class="fh5co-sub-ddown">Fundraise</a>
 							</li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li class="active"><a href="contact.html">Contact</a></li>
+							<li><a href="about.php">About</a></li>
+							<li><a href="blog.php">Blog</a></li>
+							<li class="active"><a href="contact.php">Contact</a></li>
 						</ul>
 					</nav>
 				</div>

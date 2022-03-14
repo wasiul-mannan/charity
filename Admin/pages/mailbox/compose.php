@@ -1,3 +1,12 @@
+<?php
+include("../../includes/db.php");
+session_start();
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script> window.open('../../login.php','_self')</script>";
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,7 +43,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="../../index2.html" class="logo"><b>Admin</b>LTE</a>
+        <a href="../../index2.html" class="logo"><b>AdminLTE</b>LTE</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -159,7 +168,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -197,140 +206,34 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="../widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
+              <a href="../../index.php">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="pull-right"></i>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>UI Elements</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>Forms</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-              </ul>
-            </li>
+            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-table"></i> <span>Tables</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                <li><a href="../tables/data.php"><i class="fa fa-circle-o"></i> Donation tables</a></li>
+                <li><a href="../tables/data1.php"><i class="fa fa-circle-o"></i> Volunteer tables</a></li>
               </ul>
             </li>
             <li>
-              <a href="../calendar.html">
+              <a href="../calendar.php">
                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                 <small class="label pull-right bg-red">3</small>
               </a>
             </li>
-            <li class="treeview active">
-              <a href="mailbox.html">
+            <li>
+              <a href="../mailbox/mailbox.php">
                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <small class="label pull-right bg-yellow">12</small>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="mailbox.html">Inbox <span class="label label-primary pull-right">13</span></a></li>
-                <li class="active"><a href="compose.html">Compose</a></li>
-                <li><a href="read-mail.html">Read</a></li>
-              </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>Multilevel</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                    <li>
-                      <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                      <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-              </ul>
-            </li>
-            <li><a href="../../documentation/index.html"><i class="fa fa-book"></i> Documentation</a></li>
-            <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>
+            
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -354,14 +257,14 @@
         <section class="content">
           <div class="row">
             <div class="col-md-3">
-              <a href="mailbox.html" class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
+              <a href="mailbox.php" class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Folders</h3>
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox <span class="label label-primary pull-right">12</span></a></li>
+                    <li><a href="mailbox.php"><i class="fa fa-inbox"></i> Inbox <span class="label label-primary pull-right">12</span></a></li>
                     <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
                     <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
                     <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-waring pull-right">65</span></a></li>
@@ -433,7 +336,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        
       </footer>
     </div><!-- ./wrapper -->
 

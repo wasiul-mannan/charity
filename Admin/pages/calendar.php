@@ -1,20 +1,33 @@
+<?php
+include("../includes/db.php");
+session_start();
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script> window.open('../login.php','_self')</script>";
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Timeline</title>
+    <title>AdminLTE 2 | Calendar</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- fullCalendar 2.2.5-->
+    <link href="../plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
     <!-- Theme style -->
-    <link href="../../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-    <link href="../../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +40,7 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="../../index2.html" class="logo"><b>Admin</b>LTE</a>
+        <a href="../index2.html" class="logo"><b>AdminLTE</b>LTE</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -53,7 +66,7 @@
                       <li><!-- start message -->
                         <a href="#">
                           <div class="pull-left">
-                            <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                            <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
                           </div>
                           <h4>
                             Support Team
@@ -65,7 +78,7 @@
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
+                            <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
                           </div>
                           <h4>
                             AdminLTE Design Team
@@ -77,7 +90,7 @@
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
+                            <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
                           </div>
                           <h4>
                             Developers
@@ -89,7 +102,7 @@
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
+                            <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
                           </div>
                           <h4>
                             Sales Department
@@ -101,7 +114,7 @@
                       <li>
                         <a href="#">
                           <div class="pull-left">
-                            <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
+                            <img src="../dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
                           </div>
                           <h4>
                             Reviewers
@@ -230,13 +243,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                  <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                   <span class="hidden-xs">Alexander Pierce</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
                       Alexander Pierce - Web Developer
                       <small>Member since Nov. 2012</small>
@@ -260,7 +273,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -276,7 +289,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p>Alexander Pierce</p>
@@ -297,136 +310,37 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+            <li class="active treeview">
+              <a href="../index.php">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
+  
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="../widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-              </ul>
-            </li>
-            <li class="treeview active">
-              <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>UI Elements</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                <li><a href="icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href="buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href="sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li class="active"><a href="timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href="modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>Forms</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-              </ul>
-            </li>
+  
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-table"></i> <span>Tables</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                
+                <li><a href="tables/data.php"><i class="fa fa-circle-o"></i> Donation tables</a></li>
+                <li><a href="tables/data1.php"><i class="fa fa-circle-o"></i> Volunteer tables</a></li>
               </ul>
             </li>
             <li>
-              <a href="../calendar.html">
+              <a href="#">
                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                 <small class="label pull-right bg-red">3</small>
               </a>
             </li>
             <li>
-              <a href="../mailbox/mailbox.html">
+              <a href="mailbox/mailbox.php">
                 <i class="fa fa-envelope"></i> <span>Mailbox</span>
                 <small class="label pull-right bg-yellow">12</small>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                <li><a href="../examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                <li><a href="../examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                <li><a href="../examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                <li><a href="../examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                <li><a href="../examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-share"></i> <span>Multilevel</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                    <li>
-                      <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                      <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-              </ul>
-            </li>
-            <li><a href="../../documentation/index.html"><i class="fa fa-book"></i> Documentation</a></li>
-            <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-warning"></i> Warning</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-info"></i> Information</a></li>
+            
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -437,189 +351,265 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Timeline
-            <small>example</small>
+            Calendar
+            <small>Control panel</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">UI</a></li>
-            <li class="active">Timeline</li>
+            <li class="active">Calendar</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-
-          <!-- row -->
           <div class="row">
-            <div class="col-md-12">
-              <!-- The time line -->
-              <ul class="timeline">
-                <!-- timeline time label -->
-                <li class="time-label">
-                  <span class="bg-red">
-                    10 Feb. 2014
-                  </span>
-                </li>
-                <!-- /.timeline-label -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-envelope bg-blue"></i>
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                    <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-                    <div class="timeline-body">
-                      Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                      weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                      jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                      quora plaxo ideeli hulu weebly balihoo...
-                    </div>
-                    <div class='timeline-footer'>
-                      <a class="btn btn-primary btn-xs">Read more</a>
-                      <a class="btn btn-danger btn-xs">Delete</a>
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-user bg-aqua"></i>
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                    <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-comments bg-yellow"></i>
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-                    <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-                    <div class="timeline-body">
-                      Take me to your leader!
-                      Switzerland is small and neutral!
-                      We are more like Germany, ambitious and misunderstood!
-                    </div>
-                    <div class='timeline-footer'>
-                      <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline time label -->
-                <li class="time-label">
-                  <span class="bg-green">
-                    3 Jan. 2014
-                  </span>
-                </li>
-                <!-- /.timeline-label -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-camera bg-purple"></i>
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-                    <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-                    <div class="timeline-body">
-                      <img src="http://placehold.it/150x100" alt="..." class='margin' />
-                      <img src="http://placehold.it/150x100" alt="..." class='margin'/>
-                      <img src="http://placehold.it/150x100" alt="..." class='margin'/>
-                      <img src="http://placehold.it/150x100" alt="..." class='margin'/>
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <!-- timeline item -->
-                <li>
-                  <i class="fa fa-video-camera bg-maroon"></i>
-                  <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 5 days ago</span>
-                    <h3 class="timeline-header"><a href="#">Mr. Doe</a> shared a video</h3>
-                    <div class="timeline-body">
-                      <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" frameborder="0" allowfullscreen></iframe>                        
-                      </div>
-                    </div>
-                    <div class="timeline-footer">
-                      <a href="#" class="btn btn-xs bg-maroon">See comments</a>
-                    </div>
-                  </div>
-                </li>
-                <!-- END timeline item -->
-                <li>
-                  <i class="fa fa-clock-o bg-gray"></i>
-                </li>
-              </ul>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-
-          <div class="row" style="margin-top: 10px;">
-            <div class="col-md-12">
-              <div class="box box-primary">
-                <div class="box-header">
-                  <h3 class="box-title"><i class="fa fa-code"></i> Timeline Markup</h3>
+            <div class="col-md-3">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h4 class="box-title">Draggable Events</h4>
                 </div>
                 <div class="box-body">
-                  <pre style="font-weight: 600;">
-&lt;ul class="timeline">
-
-    &lt;!-- timeline time label -->
-    &lt;li class="time-label">
-        &lt;span class="bg-red">
-            10 Feb. 2014
-        &lt;/span>
-    &lt;/li>
-    &lt;!-- /.timeline-label -->
-
-    &lt;!-- timeline item -->
-    &lt;li>
-        &lt;!-- timeline icon -->
-        &lt;i class="fa fa-envelope bg-blue">&lt;/i>
-        &lt;div class="timeline-item">
-            &lt;span class="time">&lt;i class="fa fa-clock-o">&lt;/i> 12:05&lt;/span>
-
-            &lt;h3 class="timeline-header">&lt;a href="#">Support Team&lt;/a> ...&lt;/h3>
-
-            &lt;div class="timeline-body">
-                ...
-                Content goes here
-            &lt;/div>
-
-            &lt;div class='timeline-footer'>
-                &lt;a class="btn btn-primary btn-xs">...&lt;/a>
-            &lt;/div>
-        &lt;/div>
-    &lt;/li>
-    &lt;!-- END timeline item -->
-
-    ...
-
-&lt;/ul>
-                  </pre>
+                  <!-- the events -->
+                  <div id='external-events'>
+                    <div class='external-event bg-green'>Lunch</div>
+                    <div class='external-event bg-yellow'>Go home</div>
+                    <div class='external-event bg-aqua'>Do homework</div>
+                    <div class='external-event bg-light-blue'>Work on UI design</div>
+                    <div class='external-event bg-red'>Sleep tight</div>
+                    <div class="checkbox">
+                      <label for='drop-remove'>
+                        <input type='checkbox' id='drop-remove' />
+                        remove after drop
+                      </label>
+                    </div>
+                  </div>
                 </div><!-- /.box-body -->
-              </div><!-- /.box -->
+              </div><!-- /. box -->
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Create Event</h3>
+                </div>
+                <div class="box-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                    <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                    <ul class="fc-color-picker" id="color-chooser">
+                      <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>																						
+                      <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                      <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                    </ul>
+                  </div><!-- /btn-group -->
+                  <div class="input-group">
+                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                    <div class="input-group-btn">
+                      <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                    </div><!-- /btn-group -->
+                  </div><!-- /input-group -->
+                </div>
+              </div>
+            </div><!-- /.col -->
+            <div class="col-md-9">
+              <div class="box box-primary">
+                <div class="box-body no-padding">
+                  <!-- THE CALENDAR -->
+                  <div id="calendar"></div>
+                </div><!-- /.box-body -->
+              </div><!-- /. box -->
             </div><!-- /.col -->
           </div><!-- /.row -->
-
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        
       </footer>
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.3 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="../plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- jQuery UI 1.11.1 -->
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- Slimscroll -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <!-- FastClick -->
-    <script src='../../plugins/fastclick/fastclick.min.js'></script>
+    <script src='../plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/app.min.js" type="text/javascript"></script>
+    <script src="../dist/js/app.min.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js" type="text/javascript"></script>
+    <script src="../dist/js/demo.js" type="text/javascript"></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+    <script src="../plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+    <!-- Page specific script -->
+    <script type="text/javascript">
+      $(function () {
+
+        /* initialize the external events
+         -----------------------------------------------------------------*/
+        function ini_events(ele) {
+          ele.each(function () {
+
+            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+            // it doesn't need to have a start or end
+            var eventObject = {
+              title: $.trim($(this).text()) // use the element's text as the event title
+            };
+
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+              zIndex: 1070,
+              revert: true, // will cause the event to go back to its
+              revertDuration: 0  //  original position after the drag
+            });
+
+          });
+        }
+        ini_events($('#external-events div.external-event'));
+
+        /* initialize the calendar
+         -----------------------------------------------------------------*/
+        //Date for the calendar events (dummy data)
+        var date = new Date();
+        var d = date.getDate(),
+                m = date.getMonth(),
+                y = date.getFullYear();
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          buttonText: {
+            today: 'today',
+            month: 'month',
+            week: 'week',
+            day: 'day'
+          },
+          //Random default events
+          events: [
+            {
+              title: 'All Day Event',
+              start: new Date(y, m, 1),
+              backgroundColor: "#f56954", //red
+              borderColor: "#f56954" //red
+            },
+            {
+              title: 'Long Event',
+              start: new Date(y, m, d - 5),
+              end: new Date(y, m, d - 2),
+              backgroundColor: "#f39c12", //yellow
+              borderColor: "#f39c12" //yellow
+            },
+            {
+              title: 'Meeting',
+              start: new Date(y, m, d, 10, 30),
+              allDay: false,
+              backgroundColor: "#0073b7", //Blue
+              borderColor: "#0073b7" //Blue
+            },
+            {
+              title: 'Lunch',
+              start: new Date(y, m, d, 12, 0),
+              end: new Date(y, m, d, 14, 0),
+              allDay: false,
+              backgroundColor: "#00c0ef", //Info (aqua)
+              borderColor: "#00c0ef" //Info (aqua)
+            },
+            {
+              title: 'Birthday Party',
+              start: new Date(y, m, d + 1, 19, 0),
+              end: new Date(y, m, d + 1, 22, 30),
+              allDay: false,
+              backgroundColor: "#00a65a", //Success (green)
+              borderColor: "#00a65a" //Success (green)
+            },
+            {
+              title: 'Click for Google',
+              start: new Date(y, m, 28),
+              end: new Date(y, m, 29),
+              url: 'http://google.com/',
+              backgroundColor: "#3c8dbc", //Primary (light-blue)
+              borderColor: "#3c8dbc" //Primary (light-blue)
+            }
+          ],
+          editable: true,
+          droppable: true, // this allows things to be dropped onto the calendar !!!
+          drop: function (date, allDay) { // this function is called when something is dropped
+
+            // retrieve the dropped element's stored Event Object
+            var originalEventObject = $(this).data('eventObject');
+
+            // we need to copy it, so that multiple events don't have a reference to the same object
+            var copiedEventObject = $.extend({}, originalEventObject);
+
+            // assign it the date that was reported
+            copiedEventObject.start = date;
+            copiedEventObject.allDay = allDay;
+            copiedEventObject.backgroundColor = $(this).css("background-color");
+            copiedEventObject.borderColor = $(this).css("border-color");
+
+            // render the event on the calendar
+            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+            // is the "remove after drop" checkbox checked?
+            if ($('#drop-remove').is(':checked')) {
+              // if so, remove the element from the "Draggable Events" list
+              $(this).remove();
+            }
+
+          }
+        });
+
+        /* ADDING EVENTS */
+        var currColor = "#3c8dbc"; //Red by default
+        //Color chooser button
+        var colorChooser = $("#color-chooser-btn");
+        $("#color-chooser > li > a").click(function (e) {
+          e.preventDefault();
+          //Save color
+          currColor = $(this).css("color");
+          //Add color effect to button
+          $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
+        });
+        $("#add-new-event").click(function (e) {
+          e.preventDefault();
+          //Get value and make sure it is not null
+          var val = $("#new-event").val();
+          if (val.length == 0) {
+            return;
+          }
+
+          //Create events
+          var event = $("<div />");
+          event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
+          event.html(val);
+          $('#external-events').prepend(event);
+
+          //Add draggable funtionality
+          ini_events(event);
+
+          //Remove event from text input
+          $("#new-event").val("");
+        });
+      });
+    </script>
+
   </body>
 </html>
