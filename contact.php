@@ -96,12 +96,12 @@
 							<li>
 								<a href="#" class="fh5co-sub-ddown">Get Involved</a>
 								<ul class="fh5co-sub-menu">
-									<li><a href="#">Donate</a></li>
-									<li><a href="#">Volunteer</a></li>
+									<li><a href="donate_page.php">Donate</a></li>
+									<li><a href="volunteer.php">Volunteer</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" class="fh5co-sub-ddown">Fundraise</a>
+								<a href="fundraise.php" class="fh5co-sub-ddown">Fundraise</a>
 							</li>
 							<li><a href="about.php">About</a></li>
 							<li><a href="blog.php">Blog</a></li>
@@ -229,65 +229,75 @@
 
 
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span
-							aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title" id="myModalLabel">Add Tongue Twister</h4>
-				</div>
-				<div class="modal-body">
-					<form method="POST">
-						<div class="form-group">
-							<label for="usr">Please Choose a Picture:</label>
-							<input type="file" name="image">
-							<script type="text/javascript">
-								$(document).ready(function () {
-									$(window).keydown(function (event) {
-										if (event.keyCode == 13) {
-											event.preventDefault();
-											return false;
-										}
-									});
-								});
-							</script>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Please write the tongue twister:</label>
-							<input type="text" rows="3" class="form-control">
-						</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" name="save">Save changes</button>
-					<?php if(isset($_POST['save']))
-		{
-		  //target folder to keep the media
-		  $target = "images/".basename($_FILES['image']['name']);
-	
-		  //get all submitted data from form
-		  $image = $_FILES['image']['name'];
-		  $text = $_POST['text'];
-	
-		  if(!empty($_FILES['image']['name']))
-		  { 
-		  $sql = "INSERT INTO pembelitkataku(image, text) VALUES ('$image','$text')";
-		  mysqli_query($db, $sql);
-		  }
-		  else
-		  {
-			$message = "Sila pilih semua fail";
-			echo "<script type='text/javascript'>alert('$message');</script>";
-		  }
-	
-		  move_uploaded_file($_FILES['image']['tmp_name'], $target); 
-		} 
-		?>
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Donate here</h4>
+                    </div>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="pwd">Select Payment Method</label>
+                                <select rows="3" class="form-control" name="payment_method">
+                                    <option value="Bkash">Bkash</option>
+                                    <option value="Nagad">Nagad</option>
+                                    <option value="Rocket">Rocket</option>
+                                    <option value="Ucash">Ucash</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Enter transaction mobile number</label>
+                                <input type="text" rows="3" class="form-control" name="mobile_number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Enter TRXID</label>
+                                <input type="text" rows="3" class="form-control" name="trxid">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Enter Amount</label>
+                                <input type="text" rows="3" class="form-control" name="amount">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="save">Save changes</button>
+                        </div>
+                    </form>
+
+                    <?php
+                    if (isset($_POST['save'])) {
+
+                        $payment_method = $_POST['payment_method'];
+                        $mobile_number = $_POST['mobile_number'];
+                        $trxid = $_POST['trxid'];
+                        $amount = $_POST['amount'];
+
+						if ($_SESSION['email'] != null &&  $_SESSION['password'] != null) {
+                            $volunteer_id = $_SESSION['volunteer_id'];
+                            $run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount,volunteer_id) 
+                            values ('$payment_method','$mobile_number','$trxid','$amount','$volunteer_id')");
+                        } else {
+                            $run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount) 
+                            values ('$payment_method','$mobile_number','$trxid','$amount')");
+                        }
+						
+                        if ($run_donation) {
+                            echo "<script>alert('Donated successfully')</script>";
+                            echo "<script> window.open('index.php','_self')</script>";
+                        } else {
+                            echo '<script>alert("Try again")</script>';
+                        }
+                    }
+
+                    ?>
+                </div>
+            </div>
+        </div>
 
 
 

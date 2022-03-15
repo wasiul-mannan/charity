@@ -3,7 +3,7 @@ include("includes/db.php");
 session_start();
 
 if (!isset($_SESSION['admin_email'])) {
-    echo "<script> window.open('login.php','_self')</script>";
+  echo "<script> window.open('login.php','_self')</script>";
 }
 ?>
 
@@ -18,8 +18,7 @@ if (!isset($_SESSION['admin_email'])) {
   <!-- Bootstrap 3.3.2 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <!-- FontAwesome 4.3.0 -->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
-    type="text/css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <!-- Ionicons 2.0.0 -->
   <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
   <!-- Theme style -->
@@ -201,8 +200,7 @@ if (!isset($_SESSION['admin_email'])) {
                           <small class="pull-right">20%</small>
                         </h3>
                         <div class="progress xs">
-                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">20% Complete</span>
                           </div>
                         </div>
@@ -216,8 +214,7 @@ if (!isset($_SESSION['admin_email'])) {
                           <small class="pull-right">40%</small>
                         </h3>
                         <div class="progress xs">
-                          <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">40% Complete</span>
                           </div>
                         </div>
@@ -231,8 +228,7 @@ if (!isset($_SESSION['admin_email'])) {
                           <small class="pull-right">60%</small>
                         </h3>
                         <div class="progress xs">
-                          <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">60% Complete</span>
                           </div>
                         </div>
@@ -246,8 +242,7 @@ if (!isset($_SESSION['admin_email'])) {
                           <small class="pull-right">80%</small>
                         </h3>
                         <div class="progress xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">80% Complete</span>
                           </div>
                         </div>
@@ -264,15 +259,15 @@ if (!isset($_SESSION['admin_email'])) {
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-                <span class="hidden-xs">Alexander Pierce</span>
+                <span class="hidden-xs"></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                   <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                   <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2012</small>
+                    - Web Developer
+                    <small></small>
                   </p>
                 </li>
                 <!-- Menu Body -->
@@ -312,7 +307,7 @@ if (!isset($_SESSION['admin_email'])) {
             <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p></p>
 
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
@@ -322,8 +317,7 @@ if (!isset($_SESSION['admin_email'])) {
           <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Search..." />
             <span class="input-group-btn">
-              <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i
-                  class="fa fa-search"></i></button>
+              <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
             </span>
           </div>
         </form>
@@ -348,6 +342,16 @@ if (!isset($_SESSION['admin_email'])) {
               <li><a href="pages/tables/data1.php"><i class="fa fa-circle-o"></i> Volunteer tables</a></li>
             </ul>
           </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-edit"></i> <span>Forms</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="pages/forms/blog.php"><i class="fa fa-circle-o"></i> Blog</a></li>
+              <li class="treeview"><a href="pages/forms/fundraise.php"><i class="fa fa-circle-o"></i> Fundraise</a></li>
+            </ul>
+          </li>
           <li>
             <a href="pages/calendar.php">
               <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -360,7 +364,7 @@ if (!isset($_SESSION['admin_email'])) {
               <small class="label pull-right bg-yellow">12</small>
             </a>
           </li>
-          
+
         </ul>
       </section>
       <!-- /.sidebar -->

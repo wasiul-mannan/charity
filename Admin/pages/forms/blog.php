@@ -6,14 +6,12 @@ if (!isset($_SESSION['admin_email'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="UTF-8">
-  <title>AdminLTE 2 | Data Tables</title>
+  <title>AdminLTE 2 | Dashboard</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <!-- Bootstrap 3.3.2 -->
   <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -21,8 +19,6 @@ if (!isset($_SESSION['admin_email'])) {
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <!-- Ionicons -->
   <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-  <!-- DATA TABLES -->
-  <link href="../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
   <!-- Theme style -->
   <link href="../../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
   <!-- AdminLTE Skins. Choose a skin from the css/skins 
@@ -41,7 +37,7 @@ if (!isset($_SESSION['admin_email'])) {
   <div class="wrapper">
 
     <header class="main-header">
-      <a href="../../index2.html" class="logo"><b>AdminLTE</b>LTE</a>
+      <a href="../../index2.html" class="logo"><b>Admin</b>LTE</a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
@@ -258,7 +254,7 @@ if (!isset($_SESSION['admin_email'])) {
                   <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                   <p>
                     - Web Developer
-                    <small></small>
+                    <small>Member since Nov. 2012</small>
                   </p>
                 </li>
                 <!-- Menu Body -->
@@ -279,7 +275,7 @@ if (!isset($_SESSION['admin_email'])) {
                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
-                    <a href="../../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>
@@ -322,24 +318,24 @@ if (!isset($_SESSION['admin_email'])) {
             </a>
           </li>
 
-          <li class="treeview active">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Tables</span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview active"><a href="../tables/data.php"><i class="fa fa-circle-o"></i> Donation tables</a></li>
+              <li><a href="../tables/data.php"><i class="fa fa-circle-o"></i> Donation tables</a></li>
               <li><a href="../tables/data1.php"><i class="fa fa-circle-o"></i> Volunteer tables</a></li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="treeview active">
             <a href="#">
               <i class="fa fa-edit"></i> <span>Forms</span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../forms/blog.php"><i class="fa fa-circle-o"></i> Blog</a></li>
-              <li class="treeview"><a href="../forms/fundraise.php"><i class="fa fa-circle-o"></i> Fundraise</a></li>
+              <li class="treeview active"><a href="blog.php"><i class="fa fa-circle-o"></i> Blog</a></li>
+              <li class="treeview"><a href="fundraise.php"><i class="fa fa-circle-o"></i> Fundraise</a></li>
             </ul>
           </li>
           <li>
@@ -365,86 +361,74 @@ if (!isset($_SESSION['admin_email'])) {
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Data Tables
-          <small>advanced tables</small>
+          General Form Elements
+          <small>Preview</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data tables</li>
+          <li><a href="#">Forms</a></li>
+          <li class="active">General Elements</li>
         </ol>
       </section>
 
       <!-- Main content -->
       <section class="content">
-        <div class="row">
-          <div class="col-xs-12">
+        <form action="insert_blog.php" method="post" enctype="multipart/form-data">
+          <div class="row">
+
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+
+                <!-- form start -->
+
+                <div class="box-body">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title" placeholder="Enter title">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">File banner</label>
+                    <input type="file" name="banner_path">
+                  </div>
+                </div><!-- /.box-body -->
 
 
-            <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>
-              </div><!-- /.box-header -->
-              <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Payment Method</th>
-                      <th>Mobile Number</th>
-                      <th>TrxID</th>
-                      <th>Amount</th>
-                      <th>Date</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                <div class="box-footer">
+                  <input type="submit" class="btn btn-primary" name="submit" required>
+                </div>
 
-                    <?php
-                    $total_amount = 0;
-                    $run_donation = mysqli_query($con, "select * from donations ");
-                    while ($row_run_donation = mysqli_fetch_array($run_donation)) {
-                      $id = $row_run_donation['id'];
-                    ?>
+              </div><!-- /.box -->
+            </div>
+            <!--/.col (left) -->
 
-                      <tr>
-                        <td><?php echo $row_run_donation['payment_method']; ?></td>
-                        <td><?php echo $row_run_donation['mobile_number']; ?></td>
-                        <td><?php echo $row_run_donation['trxid']; ?></td>
-                        <td><?php echo $row_run_donation['amount']; ?></td>
-                        <td><?php echo $row_run_donation['date_created']; ?></td>
-                        <td><a href="delete_donation.php?delete_id=<?php echo $id; ?>">
-                            <i class='fa fa-trash-o'></i> Delete
-                          </a></td>
-                      </tr>
+            <!-- right column -->
+            <div class="col-md-6">
+              <!-- general form elements disabled -->
+              <div class="box box-warning">
 
-                    <?php
+                <div class="box-body">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <label>Content</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter content" name="content"></textarea>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+          </div> <!-- /.row -->
 
-                      $total_amount = $total_amount + $row_run_donation['amount'];
-                    }
-                    ?>
-
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th></th>
-                      <th></th>
-                      <th>Total Donation</th>
-                      <th><?php echo $total_amount; ?></th>
-                      <th></th>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div><!-- /.box-body -->
-            </div><!-- /.box -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
+        </form>
       </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
         <b>Version</b> 2.0
       </div>
-
+      <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
     </footer>
   </div><!-- ./wrapper -->
 
@@ -452,32 +436,12 @@ if (!isset($_SESSION['admin_email'])) {
   <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
   <!-- Bootstrap 3.3.2 JS -->
   <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-  <!-- DATA TABES SCRIPT -->
-  <script src="../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-  <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-  <!-- SlimScroll -->
-  <script src="../../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
   <!-- FastClick -->
   <script src='../../plugins/fastclick/fastclick.min.js'></script>
   <!-- AdminLTE App -->
   <script src="../../dist/js/app.min.js" type="text/javascript"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../dist/js/demo.js" type="text/javascript"></script>
-  <!-- page script -->
-  <script type="text/javascript">
-    $(function() {
-      $("#example1").dataTable();
-      $('#example2').dataTable({
-        "bPaginate": true,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bSort": true,
-        "bInfo": true,
-        "bAutoWidth": false
-      });
-    });
-  </script>
-
 </body>
 
 </html>

@@ -1,8 +1,6 @@
 <?php
 include("includes/db.php");session_start();
-if (!isset($_SESSION['admin_email'])) {
-    echo "<script> window.open('login.php','_self')</script>";
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -106,12 +104,12 @@ if (!isset($_SESSION['admin_email'])) {
 								<li>
 									<a href="#" class="fh5co-sub-ddown">Get Involved</a>
 									<ul class="fh5co-sub-menu">
-										<li><a href="#">Donate</a></li>
-										<li><a href="#">Volunteer</a></li>
+										<li><a href="donate_page.php">Donate</a></li>
+										<li><a href="volunteer.php">Volunteer</a></li>
 									</ul>
 								</li>
 								<li>
-									<a href="#" class="fh5co-sub-ddown">Fundraise</a>
+									<a href="fundraise.php" class="fh5co-sub-ddown">Fundraise</a>
 
 								</li>
 								<li><a href="about.php">About</a></li>
@@ -686,14 +684,19 @@ if (!isset($_SESSION['admin_email'])) {
 					$trxid = $_POST['trxid'];
 					$amount = $_POST['amount'];
 
-					$run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount) 
-									values ('$payment_method','$mobile_number','$trxid','$amount')");
-
+					if ($_SESSION['email'] != null &&  $_SESSION['password'] != null) {
+						$volunteer_id = $_SESSION['volunteer_id'];
+						$run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount,volunteer_id) 
+						values ('$payment_method','$mobile_number','$trxid','$amount','$volunteer_id')");
+					} else {
+						$run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount) 
+						values ('$payment_method','$mobile_number','$trxid','$amount')");
+					}
 					if ($run_donation) {
 						echo "<script>alert('Donated successfully')</script>";
 						echo "<script> window.open('index.php','_self')</script>";
 					} else {
-						echo '<script>alert("Welcome to Geeks for Geeks")</script>';
+						echo '<script>alert("Try again")</script>';
 					}
 				}
 

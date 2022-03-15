@@ -111,11 +111,11 @@ session_start();
 										<li><a href="volunteer.php">Volunteer</a></li>
 									</ul>
 								</li>
-								<li>
+								<li class="active">
 									<a href="fundraise.php" class="fh5co-sub-ddown">Fundraise</a>
 								</li>
 								<li><a href="about.php">About</a></li>
-								<li class="active"><a href="blog.php">Blog</a></li>
+								<li><a href="blog.php">Blog</a></li>
 								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</nav>
@@ -149,7 +149,7 @@ session_start();
 					<div class="row row-bottom-padded-md">
 						<?php
 						$total_amount = 0;
-						$run_blogs = mysqli_query($con, "select * from blogs ");
+						$run_blogs = mysqli_query($con, "select * from funds ");
 						while ($row_run_blogs = mysqli_fetch_array($run_blogs)) {
 							$id = $row_run_blogs['id'];
 						?>
@@ -163,6 +163,7 @@ session_start();
 											<span class="posted_by"><?php echo $row_run_blogs['date_created']; ?></span>
 											<span class="comment"><a href=""><?php echo $row_run_blogs['date_created']; ?><i class="icon-bubble2"></i></a></span>
 											<p><?php
+												$id = $row_run_blogs['id'];
 												$string = strip_tags($row_run_blogs['content']);
 												if (strlen($string) > 500) {
 
@@ -172,12 +173,24 @@ session_start();
 
 													//if the string doesn't contain any space then it will cut without word basis.
 													$string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-													$string .= '... <a href="/this/story">Read More</a>';
+													$string .= "... <a href='fund_donate.php?id=$id'>Donate</a>";
 												}
 												echo $string;
+
+												$amount=0;
+												$run_f_amount = mysqli_query($con, "select * from donations where fund_id='$id' ");
+												while ($row_run_f_amount = mysqli_fetch_array($run_f_amount)) {
+													$amount = $amount + $row_run_f_amount['id'];
+												}
+
+												$parcentage = $amount / 1000;
 												?>
 											</p>
-											
+											<p>
+
+											<div class="skills" style="width: <?php echo $parcentage ?>%; background-color: #ff4119;"><?php echo $parcentage ?>%</div>
+											</p>
+
 										</div>
 									</div>
 								</div>
@@ -188,7 +201,12 @@ session_start();
 						<?php
 						}
 						?>
-						
+						<div class="row">
+							<div class="col-md-4 col-md-offset-4 text-center animate-box">
+								<a href="blog.php" class="btn btn-primary btn-lg">Our Blog</a>
+							</div>
+						</div>
+
 					</div>
 				</div>
 				<!-- fh5co-blog-section -->
@@ -247,76 +265,75 @@ session_start();
 
 
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Donate here</h4>
-                    </div>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel">Donate here</h4>
+					</div>
 
-                    <form method="POST" enctype="multipart/form-data">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="pwd">Select Payment Method</label>
-                                <select rows="3" class="form-control" name="payment_method">
-                                    <option value="Bkash">Bkash</option>
-                                    <option value="Nagad">Nagad</option>
-                                    <option value="Rocket">Rocket</option>
-                                    <option value="Ucash">Ucash</option>
-                                </select>
-                            </div>
+					<form method="POST" enctype="multipart/form-data">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="pwd">Select Payment Method</label>
+								<select rows="3" class="form-control" name="payment_method">
+									<option value="Bkash">Bkash</option>
+									<option value="Nagad">Nagad</option>
+									<option value="Rocket">Rocket</option>
+									<option value="Ucash">Ucash</option>
+								</select>
+							</div>
 
-                            <div class="form-group">
-                                <label for="pwd">Enter transaction mobile number</label>
-                                <input type="text" rows="3" class="form-control" name="mobile_number">
-                            </div>
+							<div class="form-group">
+								<label for="pwd">Enter transaction mobile number</label>
+								<input type="text" rows="3" class="form-control" name="mobile_number">
+							</div>
 
-                            <div class="form-group">
-                                <label for="pwd">Enter TRXID</label>
-                                <input type="text" rows="3" class="form-control" name="trxid">
-                            </div>
+							<div class="form-group">
+								<label for="pwd">Enter TRXID</label>
+								<input type="text" rows="3" class="form-control" name="trxid">
+							</div>
 
-                            <div class="form-group">
-                                <label for="pwd">Enter Amount</label>
-                                <input type="text" rows="3" class="form-control" name="amount">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="save">Save changes</button>
-                        </div>
-                    </form>
+							<div class="form-group">
+								<label for="pwd">Enter Amount</label>
+								<input type="text" rows="3" class="form-control" name="amount">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary" name="save">Save changes</button>
+						</div>
+					</form>
 
-                    <?php
-                    if (isset($_POST['save'])) {
+					<?php
+					if (isset($_POST['save'])) {
 
-                        $payment_method = $_POST['payment_method'];
-                        $mobile_number = $_POST['mobile_number'];
-                        $trxid = $_POST['trxid'];
-                        $amount = $_POST['amount'];
+						$payment_method = $_POST['payment_method'];
+						$mobile_number = $_POST['mobile_number'];
+						$trxid = $_POST['trxid'];
+						$amount = $_POST['amount'];
 
 						if ($_SESSION['email'] != null &&  $_SESSION['password'] != null) {
-                            $volunteer_id = $_SESSION['volunteer_id'];
-                            $run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount,volunteer_id) 
-                            values ('$payment_method','$mobile_number','$trxid','$amount','$volunteer_id')");
-                        } else {
-                            $run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount) 
-                            values ('$payment_method','$mobile_number','$trxid','$amount')");
-                        }
-                        if ($run_donation) {
-                            echo "<script>alert('Donated successfully')</script>";
-                            echo "<script> window.open('index.php','_self')</script>";
-                        } else {
-                            echo '<script>alert("Try again")</script>';
-                        }
-                    }
+							$volunteer_id = $_SESSION['volunteer_id'];
+							$run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount,volunteer_id) 
+						values ('$payment_method','$mobile_number','$trxid','$amount','$volunteer_id')");
+						} else {
+							$run_donation = mysqli_query($con, "insert into donations (payment_method,mobile_number,trxid,amount) 
+						values ('$payment_method','$mobile_number','$trxid','$amount')");
+						}
 
-                    ?>
-                </div>
-            </div>
-        </div>
+						if ($run_donation) {
+							echo "<script>alert('Donated successfully')</script>";
+							echo "<script> window.open('index.php','_self')</script>";
+						} else {
+							echo '<script>alert("Try again")</script>';
+						}
+					}
 
-
+					?>
+				</div>
+			</div>
+		</div>
 
 
 
