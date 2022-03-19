@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 01:47 PM
+-- Generation Time: Mar 19, 2022 at 02:52 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -32,24 +32,18 @@ CREATE TABLE `blogs` (
   `title` text NOT NULL,
   `topic_id` int(30) DEFAULT NULL,
   `content` text NOT NULL,
-  `keywords` text NOT NULL,
-  `meta_description` text NOT NULL,
   `banner_path` text NOT NULL,
-  `upload_dir_code` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = unpublished ,1= published',
-  `blog_url` text NOT NULL,
-  `author_id` int(30) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
-  `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blogs`
 --
 
-INSERT INTO `blogs` (`id`, `title`, `topic_id`, `content`, `keywords`, `meta_description`, `banner_path`, `upload_dir_code`, `status`, `blog_url`, `author_id`, `date_created`, `date_updated`) VALUES
-(1, 'Sample 101', 1, '&lt;p&gt;&lt;span style=\\&quot;text-align: justify;\\&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae massa quis tellus ullamcorper auctor at in mi. Vestibulum euismod, nulla sit amet rhoncus iaculis, sapien justo sodales purus, nec finibus massa massa eget ante. Maecenas vitae eros in purus dictum porttitor. Integer arcu dui, dictum ac tellus et, ultricies condimentum est. Maecenas rutrum erat tincidunt dui rutrum fermentum. Nullam pretium molestie gravida. Sed mi justo, porta id justo ac, ornare aliquam est. Cras porta nisi eu eleifend tincidunt. Donec malesuada interdum orci sit amet sollicitudin. Maecenas sed augue condimentum justo vulputate interdum vel in lacus.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=\\&quot;text-align: justify;\\&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;div style=\\&quot;text-align: center;\\&quot;&gt;&lt;img style=\\&quot;width: 625px; height: 416.667px;\\&quot; src=\\&quot;http://localhost/charity/uploads/blog_uploads/Zk1pDmHIo2/1629176073_1.jpg\\&quot;&gt;&lt;/div&gt;&lt;div style=\\&quot;\\&quot;&gt;&lt;span style=\\&quot;text-align: justify;\\\\\\&quot;&gt;Quisque sagittis varius magna ac pharetra. Nunc lobortis sapien nisl, ac fringilla enim pellentesque vitae. Vestibulum congue lorem non sapien lobortis iaculis. Sed commodo sit amet turpis sed porta. Phasellus arcu nulla, facilisis in nulla at, pharetra lobortis ligula. Nullam dignissim, nunc eget consectetur facilisis, tortor felis lacinia diam, a vestibulum magna mauris eget mi. Donec tellus ipsum, euismod at hendrerit a, consequat viverra tellus.&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;', 'Sample Keyword, 101, 102, 103', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae massa quis tellus ullamcorper auctor at in mi. Vestibulum euismod, nulla sit amet rhoncus iaculis, sapien justo sodales purus, nec finibus massa massa eget ante.', 'uploads/blog_uploads/banners/1_banner.jpg', 'Zk1pDmHIo2', 1, 'pages/sample_101.php', 1, '2021-08-17 12:56:54', '2021-08-17 13:17:35'),
-(2, 'Sample 102', 1, '&lt;h3 style=\\&quot;text-align: center; margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;\\&quot;&gt;Sample Content Only&lt;/h3&gt;&lt;p style=\\&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;\\&quot;&gt;Nullam pulvinar libero id justo faucibus elementum. Donec euismod ante tellus, et pulvinar ipsum tincidunt ac. Proin efficitur eros eu orci imperdiet fringilla. Sed ullamcorper luctus lacus, in varius sapien tincidunt gravida. Praesent elit massa, accumsan a purus id, hendrerit tincidunt risus. Nam luctus dictum ante in pellentesque. Proin eget eros in nisl lacinia semper at faucibus risus. Cras sit amet sagittis risus, non tempus neque. Proin aliquam dignissim augue, eget semper eros ultrices id. In consequat lorem mattis lobortis scelerisque. Fusce lorem arcu, condimentum iaculis nisl sed, mollis commodo nibh. Suspendisse convallis at libero id fermentum.&lt;/p&gt;&lt;p style=\\&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;\\&quot;&gt;Etiam ac dolor tincidunt, tincidunt erat vitae, tempor sem. Nulla auctor lectus nisi, non dictum tortor hendrerit at. Proin ultricies aliquam ex, eu facilisis dolor lobortis a. Aenean varius vitae ante at pharetra. Praesent rutrum metus et tellus condimentum sollicitudin. Aenean et euismod risus, vitae tincidunt enim. Cras nec augue massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean facilisis semper sapien. Curabitur sem purus, blandit rutrum urna ac, pharetra finibus massa. Morbi pharetra efficitur faucibus. Vivamus scelerisque sem eu nunc vulputate efficitur. Vestibulum porttitor nisi dolor, ut pharetra dui consequat quis.&lt;/p&gt;', 'Sample, Content, Sample 102, keyword', 'Nullam pulvinar libero id justo faucibus elementum. Donec euismod ante tellus, et pulvinar ipsum tincidunt ac. Proin efficitur eros eu orci imperdiet fringilla. Sed ullamcorper luctus lacus, in varius sapien tincidunt gravida', 'uploads/blog_uploads/banners/2_banner.jpg', '', 1, 'pages/sample_102.php', 1, '2021-08-17 13:57:56', '2021-08-17 13:57:56');
+INSERT INTO `blogs` (`id`, `title`, `topic_id`, `content`, `banner_path`, `date_created`) VALUES
+(1, 'Sample 101', 1, 'A blog (a truncation of \"weblog\")[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, \"multi-author blogs\" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other \"microblogging\" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.', 'cover_bg_1.jpg', '2021-08-17 12:56:54'),
+(2, 'Sample 102', 1, 'A blog (a truncation of \"weblog\")[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, \"multi-author blogs\" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other \"microblogging\" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.', 'cover_bg_2.jpg', '2021-08-17 13:57:56'),
+(5, 'ASDDDD', 1, 'A blog (a truncation of \"weblog\")[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, \"multi-author blogs\" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other \"microblogging\" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.', '1-10.png', '2022-03-16 01:10:45');
 
 -- --------------------------------------------------------
 
@@ -59,6 +53,8 @@ INSERT INTO `blogs` (`id`, `title`, `topic_id`, `content`, `keywords`, `meta_des
 
 CREATE TABLE `donations` (
   `id` int(30) NOT NULL,
+  `volunteer_id` int(11) NOT NULL,
+  `fund_id` int(11) NOT NULL,
   `payment_method` varchar(255) NOT NULL,
   `mobile_number` varchar(255) NOT NULL,
   `trxid` varchar(255) NOT NULL,
@@ -70,17 +66,25 @@ CREATE TABLE `donations` (
 -- Dumping data for table `donations`
 --
 
-INSERT INTO `donations` (`id`, `payment_method`, `mobile_number`, `trxid`, `amount`, `date_created`) VALUES
-(1, '', '', '', 500, '2021-08-17 16:47:43'),
-(2, '', '', '', 1000, '2021-08-17 16:48:56'),
-(3, '', '', '', 300, '2021-08-17 16:51:18'),
-(4, '', '', '', 1000, '2021-08-18 09:07:19'),
-(5, 'Bkash', '1', '2', 20, '2022-03-14 01:08:30'),
-(6, 'Bkash', '1', '2', 20, '2022-03-14 01:08:32'),
-(7, 'Bkash', '1', '2', 201, '2022-03-14 01:10:24'),
-(8, 'Bkash', 'a', 'v', 2012, '2022-03-14 01:13:18'),
-(9, 'Bkash', '', '', 20, '2022-03-14 16:30:25'),
-(10, 'Nagad', '1', '2', 20, '2022-03-14 16:31:27');
+INSERT INTO `donations` (`id`, `volunteer_id`, `fund_id`, `payment_method`, `mobile_number`, `trxid`, `amount`, `date_created`) VALUES
+(1, 0, 0, '', '', '', 522, '2021-08-17 16:47:43'),
+(2, 0, 0, '', '', '', 1022, '2021-08-17 16:48:56'),
+(5, 0, 0, 'Bkash', '1', '2', 42, '2022-03-14 01:08:30'),
+(6, 0, 0, 'Bkash', '1', '2', 42, '2022-03-14 01:08:32'),
+(7, 0, 0, 'Bkash', '1', '2', 223, '2022-03-14 01:10:24'),
+(8, 0, 0, 'Bkash', 'a', 'v', 2034, '2022-03-14 01:13:18'),
+(9, 4, 0, 'Bkash', '', '', 42, '2022-03-14 16:30:25'),
+(10, 0, 0, 'Nagad', '1', '2', 42, '2022-03-14 16:31:27'),
+(11, 4, 0, 'Rocket', '01737420211', 'gfghfgf687678', 5022, '2022-03-14 19:24:30'),
+(12, 4, 0, 'Ucash', '01737420211', 'gfghfgf687678', 5022, '2022-03-15 16:23:46'),
+(13, 0, 0, 'Rocket', '1', 'gfghfgf687678', 42, '2022-03-15 22:30:45'),
+(14, 0, 0, 'Rocket', '1', 'gfghfgf687678', 42, '2022-03-15 22:30:46'),
+(15, 4, 0, 'Nagad', '01737420211', 'gfghfgf687678', 223, '2022-03-15 22:37:43'),
+(16, 0, 0, 'Nagad', '01737420211', 'gfghfgf687678', 223, '2022-03-15 22:37:43'),
+(17, 4, 1, 'Bkash', '01737420211', 'gfghfgf687678', 2012, '2022-03-15 23:09:21'),
+(18, 4, 1, 'Bkash', '01737420211', 'gfghfgf687678', 5000, '2022-03-15 23:13:19'),
+(19, 0, 0, 'Bkash', '01737420211', 'gfghfgf687678', 20, '2022-03-16 20:58:20'),
+(20, 0, 0, 'Bkash', '01737420211', 'gfghfgf687678', 20, '2022-03-16 20:58:20');
 
 -- --------------------------------------------------------
 
@@ -105,6 +109,31 @@ INSERT INTO `events` (`id`, `title`, `description`, `schedule`, `img_path`, `dat
 (1, 'Sample Event', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae massa quis tellus ullamcorper auctor at in mi. Vestibulum euismod, nulla sit amet rhoncus iaculis, sapien justo sodales purus, nec finibus massa massa eget ante. Maecenas vitae eros in purus dictum porttitor. Integer arcu dui, dictum ac tellus et, ultricies condimentum est. Maecenas rutrum erat tincidunt dui rutrum fermentum. Nullam pretium molestie gravida. Sed mi justo, porta id justo ac, ornare aliquam est. Cras porta nisi eu eleifend tincidunt. Donec malesuada interdum orci sit amet sollicitudin. Maecenas sed augue condimentum justo vulputate interdum vel in lacus.', '2021-08-23', 'uploads/events/1.jpg', '2021-08-17 15:16:11'),
 (3, 'Event 102', 'Sample Only', '2021-08-25', 'uploads/events/3.jpg', '2021-08-17 15:17:52'),
 (4, 'Sample Event 3', 'Sample Event only', '2021-08-30', 'uploads/events/4.jpg', '2021-08-17 15:55:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `funds`
+--
+
+CREATE TABLE `funds` (
+  `id` int(30) NOT NULL,
+  `volunteer_id` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `topic_id` int(30) DEFAULT NULL,
+  `content` text NOT NULL,
+  `amount` int(11) NOT NULL,
+  `banner_path` text NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `funds`
+--
+
+INSERT INTO `funds` (`id`, `volunteer_id`, `title`, `topic_id`, `content`, `amount`, `banner_path`, `date_created`) VALUES
+(1, 2, 'ASD', 1, 'A blog (a truncation of \"weblog\")[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, \"multi-author blogs\" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other \"microblogging\" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.', 50000, 'cover_bg_1.jpg', '2022-03-15 22:52:48'),
+(2, 0, 'asd', 1, 'A blog (a truncation of \"weblog\")[1] is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, \"multi-author blogs\" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other \"microblogging\" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.', 0, '10-1.jpg', '2022-03-16 01:20:46');
 
 -- --------------------------------------------------------
 
@@ -210,6 +239,28 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `avatar`, `last_login`, `type`, `date_added`, `date_updated`) VALUES
 (1, 'Adminstrator', 'Admin', 'admin@admin.com', 'password', 'uploads/1624240500_avatar.png', NULL, 1, '2021-01-20 14:02:37', '2022-03-14 18:21:09');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `volunteer`
+--
+
+CREATE TABLE `volunteer` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `volunteer`
+--
+
+INSERT INTO `volunteer` (`id`, `name`, `mobile`, `email`, `address`, `password`) VALUES
+(4, 'Wasiul Mannan', '01737420211', 'admin@admin.com', 'Bogura', 'password');
+
 --
 -- Indexes for dumped tables
 --
@@ -232,6 +283,12 @@ ALTER TABLE `donations`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `funds`
+--
+ALTER TABLE `funds`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -259,6 +316,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `volunteer`
+--
+ALTER TABLE `volunteer`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -266,19 +329,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `donations`
 --
 ALTER TABLE `donations`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `funds`
+--
+ALTER TABLE `funds`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `system_info`
@@ -303,6 +372,12 @@ ALTER TABLE `uploads`
 --
 ALTER TABLE `users`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `volunteer`
+--
+ALTER TABLE `volunteer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
