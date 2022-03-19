@@ -179,11 +179,13 @@ session_start();
 
 												$amount=0;
 												$run_f_amount = mysqli_query($con, "select * from donations where fund_id='$id' ");
+												
 												while ($row_run_f_amount = mysqli_fetch_array($run_f_amount)) {
-													$amount = $amount + $row_run_f_amount['id'];
+													$amount = $amount + $row_run_f_amount['amount'];
+													
 												}
 
-												$parcentage = $amount / 1000;
+												$parcentage = $amount / 1000000;
 												?>
 											</p>
 											<p>

@@ -246,7 +246,7 @@ session_start();
 
                                     $_SESSION['email'] = $row_run_v_login['email'];
                                     $_SESSION['password'] = $row_run_v_login['password'];
-                                    $_SESSION['volunteer_id'] = $row_run_v_login['ids'];
+                                    $_SESSION['volunteer_id'] = $row_run_v_login['id'];
 
                                     echo "<script>alert('Logged in. Welcome Back ')</script>";
                                 } else {
