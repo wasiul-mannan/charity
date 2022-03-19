@@ -137,7 +137,7 @@
 								<li><i class="icon-location-pin"></i>CHILDREN Charity, House #57 Road #7/B, Block <div id="H">Banani, 1213,Dhaka Bangladesh</div></li>
 								<li><i class="icon-phone2"></i>+8801763770934</li>
 								<li><i class="icon-mail"></i><a href="#">sameera.tec.cse@gmail.com</a></li>
-								<li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
+								
 							</ul>
 						</div>
 						<div class="col-md-6">
