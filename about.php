@@ -119,7 +119,7 @@
 
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_2.jpg);">
+			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_2.jpg);">
 				<div class="desc animate-box">
 					<h2>We Are <strong>Non-profit</strong></h2>
 					
@@ -140,13 +140,13 @@
 
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-12 text-center animate-box">
-						<p><img src="images/cover_bg_1.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+						<p><img src="images/cover_1.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 					</div>
 					<div class="col-md-6 text-center animate-box">
-						<p><img src="images/cover_bg_2.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+						<p><img src="images/cover_2.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 					</div>
 					<div class="col-md-6 text-center animate-box">
-						<p><img src="images/cover_bg_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+						<p><img src="images/cover_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 					</div>
 				</div>
 				<div class="row">
@@ -263,7 +263,7 @@
 							</figure>
 
 							<div>
-								<h3>Jean Doe</h3>
+								<h3>Jhon Doe</h3>
 								<p><span>Founder</span></p>
 								<p>Mr. jhon deo is a CEO of our charity organization.He donates a lot of time and thousans dollar money also give his icrediable talet for making our organization.</p>
 							</div>
@@ -281,9 +281,9 @@
 								<img src="images/person_2.jpg" alt="user">
 							</figure>
 							<div>
-								<h3>John Doe</h3>
-								<p><span>Founder</span></p>
-								<p>Mr. jhon deo is a CEO of our charity organization.He donates a lot of time and thousans dollar money also give his icrediable talet for making our organization.</p>
+								<h3>MD.Akhtaruzzaman</h3>
+								<p><span>Manager</span></p>
+								<p>Mr. Akhtaruzzaman is a Manager of our charity organization.He manages all of things and taken care of our organization.</p>
 							</div>
 							<p class="fh5co-social-icons">
 								<a href="#"><i class="icon-twitter2"></i></a>
@@ -298,9 +298,9 @@
 								<img src="images/person_3.jpg" alt="user">
 							</figure>
 							<div>
-								<h3>John Doe</h3>
-								<p><span>Founder</span></p>
-								<p>Mr. jhon deo is a CEO of our charity organization.He donates a lot of time and thousans dollar money also give his icrediable talet for making our organization.</p>
+								<h3>Mrs.joya Hasan</h3>
+								<p><span>Partner</span></p>
+								<p>Mrs joya Hasan is an Oldest member of our charity organization.She is the partner of our organization and at the same time she also effeorts a lot .</p>
 							</div>
 							<p class="fh5co-social-icons">
 								<a href="#"><i class="icon-twitter2"></i></a>

@@ -13,7 +13,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <head>
   <meta charset="UTF-8">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>AdminLTE  | Dashboard</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <!-- Bootstrap 3.3.2 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -76,7 +76,7 @@ if (!isset($_SESSION['admin_email'])) {
                       <!-- start message -->
                       <a href="#">
                         <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                          <img src="dist/img/icon.png" class="img-circle" alt="User Image" />
                         </div>
                         <h4>
                           Support Team
@@ -258,13 +258,13 @@ if (!isset($_SESSION['admin_email'])) {
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                <img src="dist/img/icon.png" class="user-image" alt="User Image" />
                 <span class="hidden-xs"></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                  <img src="dist/img/icon.png" class="img-circle" alt="User Image" />
                   <p>
                     - Web Developer
                     <small></small>
@@ -304,7 +304,7 @@ if (!isset($_SESSION['admin_email'])) {
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+            <img src="dist/img/icon.png" class="img-circle" alt="User Image" />
           </div>
           <div class="pull-left info">
             <p></p>

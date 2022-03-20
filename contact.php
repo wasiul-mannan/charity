@@ -116,7 +116,7 @@
 
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_2.jpg);">
+			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_2.jpg);">
 				<div class="desc animate-box">
 					<h2><strong>Contact</strong> Us</h2>
 					
@@ -169,7 +169,7 @@
 			</div>
 		</div>
 		<!-- END fh5co-contact -->
-		<div id="map" class="fh5co-map"></div>
+		
 		<!-- END map -->
 
 		
@@ -217,9 +217,7 @@
 	<script src="js/hoverIntent.js"></script>
 	<script src="js/superfish.js"></script>
 
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
+	
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>

@@ -131,19 +131,19 @@ include("includes/db.php");session_start();
 
 						<div class="mySlides fade">
 							<div class="numbertext">1 / 3</div>
-							<img src="images/cover_bg_1.jpg" style="width:100%">
+							<img src="images/cover_1.jpg" style="width:100%">
 
 						</div>
 
 						<div class="mySlides fade">
 							<div class="numbertext">2 / 3</div>
-							<img src="images/cover_bg_2.jpg" style="width:100%">
+							<img src="images/cover_2.jpg" style="width:100%">
 
 						</div>
 
 						<div class="mySlides fade">
 							<div class="numbertext">3 / 3</div>
-							<img src="images/cover_bg_3.jpg" style="width:100%">
+							<img src="images/cover_3.jpg" style="width:100%">
 
 						</div>
 
@@ -224,13 +224,13 @@ include("includes/db.php");session_start();
 
 					<div class="row row-bottom-padded-md">
 						<div class="col-md-12 text-center animate-box">
-							<p><img src="images/cover_bg_1.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+							<p><img src="images/cover_1.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 						</div>
 						<div class="col-md-6 text-center animate-box">
-							<p><img src="images/cover_bg_2.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+							<p><img src="images/cover_2.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 						</div>
 						<div class="col-md-6 text-center animate-box">
-							<p><img src="images/cover_bg_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+							<p><img src="images/cover_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
 						</div>
 					</div>
 					<div class="row">
@@ -253,7 +253,7 @@ include("includes/db.php");session_start();
 								<h3>Charity</h3>
 								<p>A charitable organization is a nonprofit organization that seeks to advance some public benefit. 
 									Public benefit includes a broad range of areas such as education, 
-									poverty alleviation, scientific research, environment, diversity, religion, and health.</p>
+									poverty alleviation, religion, and health.</p>
 							</div>
 						</div>
 					</div>
@@ -349,7 +349,7 @@ include("includes/db.php");session_start();
 								<blockquote>
 									<p>&ldquo;Mr. jhon deo is a CEO of our charity organization.He donates a lot of time and thousans dollar money also give his icrediable talet for making our organization.&rdquo;</p>
 								</blockquote>
-								<span>Jean Doe, XYZ Co.</span>
+								<span>Jean Doe, Charity Co.</span>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -358,9 +358,9 @@ include("includes/db.php");session_start();
 									<img src="images/person_2.jpg" alt="user">
 								</figure>
 								<blockquote>
-									<p>&ldquo;Mr. jhon deo is a CEO of our charity organization.He donates a lot of time and thousans dollar money also give his icrediable talet for making our organization.&rdquo;</p>
+									<p>&ldquo;Mr. Akhtaruzzaman is a Manager of our charity organization.He manages all of things and taken care of our organization.&rdquo;</p>
 								</blockquote>
-								<span>John Doe, XYZ Co.</span>
+								<span>Md. Akhtaruzzaman, Charity Co.</span>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -369,9 +369,9 @@ include("includes/db.php");session_start();
 									<img src="images/person_3.jpg" alt="user">
 								</figure>
 								<blockquote>
-									<p>&ldquo;Mr. jhon deo is a CEO of our charity organization.He donates a lot of time and thousands dollar money also give his icrediable talet for making our organization.&rdquo;</p>
+									<p>&ldquo;Mrs joya Hasan is an Oldest member of our charity organization.She is the partner of our organization and at the same time she also effeorts a lot .&rdquo;</p>
 								</blockquote>
-								<span>John Doe, XYZ Co.</span>
+								<span>Mrs joya Hasan, Charity Co.</span>
 							</div>
 						</div>
 					</div>
