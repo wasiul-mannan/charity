@@ -415,6 +415,11 @@ if (!isset($_SESSION['admin_email'])) {
                     <label>Content</label>
                     <textarea class="form-control" rows="3" placeholder="Enter content" name="content"></textarea>
                   </div>
+
+                  <div class="form-group">
+                    <label>Target amount</label>
+                    <input class="form-control" rows="3" placeholder="Enter target amount" name="target">
+                  </div>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div>

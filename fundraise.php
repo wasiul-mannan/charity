@@ -174,18 +174,26 @@ session_start();
 													//if the string doesn't contain any space then it will cut without word basis.
 													$string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
 													$string .= "... <a href='fund_donate.php?id=$id'>Donate</a>";
+												} else {
+													$stringCut = substr($string, 0, 500);
+													$endPoint = strrpos($stringCut, ' ');
+
+													//if the string doesn't contain any space then it will cut without word basis.
+													$string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+													$string .= "... <a href='fund_donate.php?id=$id'>Donate</a>";
 												}
 												echo $string;
 
-												$amount=0;
+												$amount = 0;
 												$run_f_amount = mysqli_query($con, "select * from donations where fund_id='$id' ");
-												
+
 												while ($row_run_f_amount = mysqli_fetch_array($run_f_amount)) {
 													$amount = $amount + $row_run_f_amount['amount'];
-													
 												}
+												$j = 100;
+												$target = $row_run_blogs['target'];
+												$parcentage = (float) (($j / $target) * $amount);
 
-												$parcentage = $amount / 100000;
 												?>
 											</p>
 											<p>
