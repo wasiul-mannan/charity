@@ -127,9 +127,9 @@ session_start();
 
             <div class="fh5co-hero">
                 <div class="fh5co-overlay"></div>
-                <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
+                <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_2.jpg);">
                     <div class="desc animate-box">
-                        <h2>Our <strong>Blog &amp; News</strong></h2>
+                        
 
                         <span><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Donate Now</button></span>
                     </div>
@@ -316,16 +316,6 @@ session_start();
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>

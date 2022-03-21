@@ -127,9 +127,9 @@ session_start();
 
 			<div class="fh5co-hero">
 				<div class="fh5co-overlay"></div>
-				<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
+				<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/new.png);">
 					<div class="desc animate-box">
-						<h2>Our <strong>Blog &amp; News</strong></h2>
+						<h2> <strong>RAISING FUNDS</strong></h2>
 
 						<span><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Donate Now</button></span>
 					</div>
@@ -174,16 +174,26 @@ session_start();
 													//if the string doesn't contain any space then it will cut without word basis.
 													$string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
 													$string .= "... <a href='fund_donate.php?id=$id'>Donate</a>";
+												} else {
+													$stringCut = substr($string, 0, 500);
+													$endPoint = strrpos($stringCut, ' ');
+
+													//if the string doesn't contain any space then it will cut without word basis.
+													$string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+													$string .= "... <a href='fund_donate.php?id=$id'>Donate</a>";
 												}
 												echo $string;
 
-												$amount=0;
+												$amount = 0;
 												$run_f_amount = mysqli_query($con, "select * from donations where fund_id='$id' ");
-												while ($row_run_f_amount = mysqli_fetch_array($run_f_amount)) {
-													$amount = $amount + $row_run_f_amount['id'];
-												}
 
-												$parcentage = $amount / 1000;
+												while ($row_run_f_amount = mysqli_fetch_array($run_f_amount)) {
+													$amount = $amount + $row_run_f_amount['amount'];
+												}
+												$j = 100;
+												$target = $row_run_blogs['target'];
+												$parcentage = (float) (($j / $target) * $amount);
+
 												?>
 											</p>
 											<p>

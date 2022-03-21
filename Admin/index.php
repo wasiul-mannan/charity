@@ -5,6 +5,34 @@ session_start();
 if (!isset($_SESSION['admin_email'])) {
   echo "<script> window.open('login.php','_self')</script>";
 }
+
+$count_volunteer = mysqli_query($con, "SELECT COUNT(name) FROM volunteer; ");
+$row_count_volunteer = mysqli_fetch_array($count_volunteer);
+$total_volunteer = $row_count_volunteer[0];
+
+
+$count_blogs = mysqli_query($con, "SELECT COUNT(id) FROM blogs; ");
+$row_count_blogs = mysqli_fetch_array($count_blogs);
+$total_blogs = $row_count_blogs[0];
+
+
+$count_fundraise = mysqli_query($con, "SELECT COUNT(id) FROM funds; ");
+$row_count_fundraise = mysqli_fetch_array($count_fundraise);
+$total_fundraise = $row_count_fundraise[0];
+
+
+$count_donation = mysqli_query($con, "SELECT SUM(amount) AS total_donation FROM donations; ");
+$row_count_donation = mysqli_fetch_array($count_donation);
+$total_donation = $row_count_donation['total_donation'];
+
+
+
+
+
+
+
+
+
 ?>
 
 
@@ -13,7 +41,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <head>
   <meta charset="UTF-8">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>AdminLTE | Dashboard</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <!-- Bootstrap 3.3.2 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -76,7 +104,7 @@ if (!isset($_SESSION['admin_email'])) {
                       <!-- start message -->
                       <a href="#">
                         <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                          <img src="dist/img/icon.png" class="img-circle" alt="User Image" />
                         </div>
                         <h4>
                           Support Team
@@ -258,13 +286,13 @@ if (!isset($_SESSION['admin_email'])) {
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                <img src="dist/img/icon.png" class="user-image" alt="User Image" />
                 <span class="hidden-xs"></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                  <img src="dist/img/icon.png" class="img-circle" alt="User Image" />
                   <p>
                     - Web Developer
                     <small></small>
@@ -304,7 +332,7 @@ if (!isset($_SESSION['admin_email'])) {
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+            <img src="dist/img/icon.png" class="img-circle" alt="User Image" />
           </div>
           <div class="pull-left info">
             <p></p>
@@ -392,52 +420,52 @@ if (!isset($_SESSION['admin_email'])) {
             <!-- small box -->
             <div class="small-box bg-aqua">
               <div class="inner">
-                <h3>150</h3>
-                <p>New Orders</p>
+                <h3><?php echo $total_fundraise;?></h3>
+                <p>Total Fundraise</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="pages/forms/fundraise_list.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div><!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Bounce Rate</p>
+                <h3><?php echo $total_donation;?> <sup style="font-size: 20px">tk</sup></h3>
+                <p>Total Donated amount</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="pages/tables/data.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div><!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3>44</h3>
-                <p>User Registrations</p>
+                <h3><?php echo $total_volunteer;?></h3>
+                <p>Total Volunteers</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="pages/tables/data1.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div><!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3>65</h3>
-                <p>Unique Visitors</p>
+                <h3><?php echo $total_blogs;?></h3>
+                <p>Blogs</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="pages/forms/blog_list.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div><!-- ./col -->
         </div><!-- /.row -->
