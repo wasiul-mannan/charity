@@ -76,7 +76,7 @@ if (!isset($_SESSION['admin_email'])) {
                     <li>
                       <a href="#">
                         <div class="pull-left">
-                          <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="user image" />
+                          <img src="../../dist/img/user3-160x160.jpg" class="img-circle" alt="user image" />
                         </div>
                         <h4>
                           AdminLTE Design Team
@@ -335,7 +335,9 @@ if (!isset($_SESSION['admin_email'])) {
             </a>
             <ul class="treeview-menu">
               <li class="treeview active"><a href="blog.php"><i class="fa fa-circle-o"></i> Blog</a></li>
+              <li class="treeview active"><a href="blog_list.php"><i class="fa fa-circle-o"></i> Blog List</a></li>
               <li class="treeview"><a href="fundraise.php"><i class="fa fa-circle-o"></i> Fundraise</a></li>
+              <li class="treeview"><a href="fundraise_list.php"><i class="fa fa-circle-o"></i> Fundraise List</a></li>
             </ul>
           </li>
           <li>

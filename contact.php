@@ -17,7 +17,7 @@ if (isset($_POST['send_msg'])) {
 
 
 	if ($run_contact) {
-		echo "<script>alert('Donated successfully')</script>";
+		echo "<script>alert('Message sent successfully')</script>";
 		echo "<script> window.open('index.php','_self')</script>";
 	} else {
 		echo '<script>alert("Try again")</script>';

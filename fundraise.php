@@ -192,8 +192,8 @@ session_start();
 												}
 												$j = 100;
 												$target = $row_run_blogs['target'];
-												$parcentage = (float) (($j / $target) * $amount);
-
+												$parcentage1 = (float) (($j / $target) * $amount);
+												$parcentage = number_format((float)$parcentage1, 2, '.', '');
 												?>
 											</p>
 											<p>
