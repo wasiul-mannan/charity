@@ -156,7 +156,7 @@ session_start();
                                         <li>
                                             <button type="submit" class="btn btn-primary" name="donation">Donation</button>
                                         </li>
-                                        
+
                                         <li>
                                             <a type="submit" href="logout.php" class="btn btn-primary">Logout</a>
                                         </li>
@@ -179,8 +179,17 @@ session_start();
                                 $address = $_POST['address'];
                                 $password = $_POST['password'];
 
-                                $run_volunteer_reg = mysqli_query($con, "insert into volunteer (name,mobile,email,address,password) 
-									values ('$name','$mobile','$email','$address','$password')");
+
+                                $image_path = $_FILES['image_path']['name'];
+
+
+                                $temp_name1 = $_FILES['image_path']['tmp_name'];
+
+
+                                move_uploaded_file($temp_name1, "../../../images/$image_path");
+
+                                $run_volunteer_reg = mysqli_query($con, "insert into volunteer (name,mobile,email,address,password,image_path) 
+									values ('$name','$mobile','$email','$address','$password','$image_path')");
 
                                 if ($run_volunteer_reg) {
                                     echo "<script>alert('Registered successfully')</script>";
@@ -194,7 +203,12 @@ session_start();
 
                             if (isset($_POST['registration'])) {
                         ?>
-                                <form style="padding-bottom: 10%;" method="POST">
+                                <form style="padding-bottom: 10%;" method="POST" enctype="multipart/form-data">
+
+                                    <div class="form-group">
+                                        <label for="pwd">Your Image</label>
+                                        <input type="file" rows="3" class="form-control" name="image_path">
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="pwd">Name</label>
