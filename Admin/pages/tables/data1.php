@@ -389,6 +389,7 @@ if (!isset($_SESSION['admin_email'])) {
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th>Image</th>
                       <th>Name</th>
                       <th>Mobile Number</th>
                       <th>Email</th>
@@ -406,6 +407,7 @@ if (!isset($_SESSION['admin_email'])) {
                     ?>
 
                       <tr>
+                        <td><img style="width: 80px; height:80px;" src="../../../images/<?php echo $row_run_donation['image_path']; ?>" alt=""></td>
                         <td><?php echo $row_run_donation['name']; ?></td>
                         <td><?php echo $row_run_donation['mobile']; ?></td>
                         <td><?php echo $row_run_donation['email']; ?></td>

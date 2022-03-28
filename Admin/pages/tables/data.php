@@ -389,6 +389,8 @@ if (!isset($_SESSION['admin_email'])) {
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th>Volunteer Image</th>
+                      <th>Volunteer Name</th>
                       <th>Payment Method</th>
                       <th>Mobile Number</th>
                       <th>TrxID</th>
@@ -407,6 +409,17 @@ if (!isset($_SESSION['admin_email'])) {
                     ?>
 
                       <tr>
+                        <?php
+                        $v_id = $row_run_donation['volunteer_id'];
+
+                        $run_donation_v_n = mysqli_query($con, "select * from volunteer where id='$v_id'");
+                        $row_run_donation_v_n = mysqli_fetch_array($run_donation_v_n);
+
+                        ?>
+
+                        <td><img style="width: 80px; height:80px;" src="../../../images/<?php echo $row_run_donation_v_n['image_path']; ?>" alt=""></td>
+
+                        <td><?php echo $row_run_donation_v_n['name']; ?></td>
                         <td><?php echo $row_run_donation['payment_method']; ?></td>
                         <td><?php echo $row_run_donation['mobile_number']; ?></td>
                         <td><?php echo $row_run_donation['trxid']; ?></td>

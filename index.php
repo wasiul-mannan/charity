@@ -1,5 +1,6 @@
 <?php
-include("includes/db.php");session_start();
+include("includes/db.php");
+session_start();
 
 ?>
 
@@ -20,19 +21,7 @@ include("includes/db.php");session_start();
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
 
-	<!-- 
-	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
 
 	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content="" />
@@ -160,7 +149,7 @@ include("includes/db.php");session_start();
 						<h2><strong>Donate</strong> for the <strong>Poor Children</strong></h2>
 
 						<span><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Donate Now</button></span>
-						
+
 					</div>
 				</div>
 
@@ -238,21 +227,21 @@ include("includes/db.php");session_start();
 							<div class="feature-text">
 								<h3>Love</h3>
 								<p>Love for Children Development Charitable Organization
-									 is a nonprofit charitable and development organization.</p>
+									is a nonprofit charitable and development organization.</p>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="feature-text">
 								<h3>Compassion</h3>
 								<p>Delivers children equity, independence, social inclusion,
-									 mobility and self-esteem by funding and delivering equipment and services.</p>
+									mobility and self-esteem by funding and delivering equipment and services.</p>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="feature-text">
 								<h3>Charity</h3>
-								<p>A charitable organization is a nonprofit organization that seeks to advance some public benefit. 
-									Public benefit includes a broad range of areas such as education, 
+								<p>A charitable organization is a nonprofit organization that seeks to advance some public benefit.
+									Public benefit includes a broad range of areas such as education,
 									poverty alleviation, religion, and health.</p>
 							</div>
 						</div>
@@ -269,7 +258,7 @@ include("includes/db.php");session_start();
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
 							<h3>Our Gallery</h3>
-							<p>This is the gallery of our children charity organization, 
+							<p>This is the gallery of our children charity organization,
 								we are trying to capture the best moment of our kids
 								.</p>
 						</div>
@@ -393,7 +382,7 @@ include("includes/db.php");session_start();
 						<div class="col-md-4 col-sm-4">
 							<div class="services animate-box">
 								<span><i class="icon-heart"></i></span>
-								<h3>Education to every child            </h3>
+								<h3>Education to every child </h3>
 								<p>Every child has the right to an education.Education is a powerful tool.</p>
 							</div>
 						</div>
@@ -414,7 +403,7 @@ include("includes/db.php");session_start();
 						<div class="col-md-4 col-sm-4">
 							<div class="services animate-box">
 								<span><i class="icon-heart"></i></span>
-								<h3>Promoting The Rights of Children  </h3>
+								<h3>Promoting The Rights of Children </h3>
 								<p>. Child Rights are fundamental freedoms and the inherent rights of all human beings below the age of 18.</p>
 							</div>
 						</div>
@@ -423,15 +412,15 @@ include("includes/db.php");session_start();
 								<span><i class="icon-heart"></i></span>
 								<h3>Raise Fund for Healthy Food </h3>
 								<p>Planning, researching, or preparing to ask for support,
-									 along with related activities such as profile raising.</p>
+									along with related activities such as profile raising.</p>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
 							<div class="services animate-box">
 								<span><i class="icon-heart"></i></span>
-								<h3>Safe Zone for children  </h3>
+								<h3>Safe Zone for children </h3>
 								<p>Safe spaces are places where children can go to calm down, be alone,
-									 and recharge so they are ready to learn.</p>
+									and recharge so they are ready to learn.</p>
 							</div>
 						</div>
 					</div>
@@ -686,12 +675,6 @@ include("includes/db.php");session_start();
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
 </body>
 
 </html>
